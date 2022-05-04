@@ -25,7 +25,7 @@ public class VehicleService {
     public VehicleDetailImpli build(Vehicle vehicleInfo) {
         VehicleDetailImpli vehicle = new VehicleDetailImpli(
                 vehicleInfo.getId(),
-                vehicleInfo.getOwnerId(),
+                vehicleInfo.getEmail(),
                 vehicleInfo.getType(),
                 vehicleInfo.getVehicleNum());
         return vehicle;

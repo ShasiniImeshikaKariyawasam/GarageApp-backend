@@ -75,17 +75,17 @@ public class AuthenticationController {
 	@PostMapping("/auth/addVehicle")
 	public String addVehicle(@RequestBody VehicleInfo vehicleInfo) {
 		Vehicle vehicle = new Vehicle(
-				vehicleInfo.getOwnerId(),
+				vehicleInfo.getEmail(),
 				vehicleInfo.getType(),
 				vehicleInfo.getVehicleNum()
 		);
 		vehicleRepository.save(vehicle);
 		return "redirect:/addVehicle?success";
 	}
-
+//success
 	@RequestMapping ("/auth/editVehicle/{id}")
-	public String editVehicle(@RequestBody VehicleInfo vehicleInfo, @PathVariable Long id) {
-		Vehicle exvehicle = vehicleRepository.getVehicleByOwnerId(id);
+	public String editVehicle(@RequestBody VehicleInfo vehicleInfo, @PathVariable String email) {
+		Vehicle exvehicle = vehicleRepository.getVehicleByEmail(email);
 //				exvehicle.setOwnerId(exvehicle.getOwnerId());
 				exvehicle.setType(vehicleInfo.getType());
 				exvehicle.setVehicleNum(vehicleInfo.getVehicleNum());
@@ -104,6 +104,7 @@ public class AuthenticationController {
 //		userDetailsRepository.updateUser(ex);
 //		return "redirect:/editUser?success";
 //	}
+
 
 	@PostMapping("/auth/login")
 	public ResponseEntity<?> login(@RequestBody AuthenticationRequest authenticationRequest) throws InvalidKeySpecException, NoSuchAlgorithmException {

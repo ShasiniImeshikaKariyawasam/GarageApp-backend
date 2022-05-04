@@ -47,4 +47,7 @@ public class VehicleServiceImple implements VehicleServiceRepo {
         return vehicleRepository.findByVehicleNum(ownerId);
     }
 
+    @Override
+    public  Vehicle getVehicleByEmail(String email) { return vehicleRepository.findByVehicleNum(email); }
+
 }

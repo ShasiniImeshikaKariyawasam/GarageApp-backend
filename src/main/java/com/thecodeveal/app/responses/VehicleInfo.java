@@ -3,11 +3,11 @@ package com.thecodeveal.app.responses;
 public class VehicleInfo {
 
     private String vehicleNum;
-    private long ownerId;
+    private String email;
     private String type;
 
-    public VehicleInfo(long ownerId,String type,String vehicleNum) {
-        this.ownerId = ownerId;
+    public VehicleInfo(String email,String type,String vehicleNum) {
+        this.email = email;
         this.type = type;
         this.vehicleNum = vehicleNum;
     }
@@ -20,12 +20,12 @@ public class VehicleInfo {
         this.vehicleNum = vehicleNum;
     }
 
-    public long getOwnerId() {
-        return ownerId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getType() {

@@ -15,4 +15,6 @@ public interface VehicleServiceRepo {
     Vehicle updateVehicle(Vehicle vehicle);
 
     void  deleteVehicleByVehicleNum(String vehicleNum);
+
+    Vehicle getVehicleByEmail(String email);
 }

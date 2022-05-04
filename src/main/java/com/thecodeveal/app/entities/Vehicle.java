@@ -13,14 +13,14 @@ public class Vehicle {
     @Column(name = "vehicleNum", unique = true)
     private String vehicleNum;
 
-    @Column(name = "ownerId")
-    private long ownerId;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "type")
     private String type;
 
-    public Vehicle(long ownerId,String type,String vehicleNum) {
-        this.ownerId = ownerId;
+    public Vehicle(String email,String type,String vehicleNum) {
+        this.email = email;
         this.type = type;
         this.vehicleNum = vehicleNum;
     }
@@ -44,12 +44,12 @@ public class Vehicle {
         this.vehicleNum = vehicleNum;
     }
 
-    public long getOwnerId() {
-        return ownerId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getType() {

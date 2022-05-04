@@ -13,7 +13,7 @@ public interface UserDetailsRepository extends JpaRepository<User, Long> {
 	User findByUserName(String userName);
 	User save(UserInfo registration);
 
-//	User updateUser(User user);
+	//User updateUser(User user);
 
 }
 

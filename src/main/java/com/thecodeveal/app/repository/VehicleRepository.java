@@ -10,7 +10,8 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 
     Vehicle findByVehicleNum(String vehicleNum);
     Vehicle getVehicleById(Long id);
-    Vehicle getVehicleByOwnerId(Long ownerId);
+
     Vehicle save(VehicleInfo vehicleInfo);
+    Vehicle getVehicleByEmail(String email);
 
 }

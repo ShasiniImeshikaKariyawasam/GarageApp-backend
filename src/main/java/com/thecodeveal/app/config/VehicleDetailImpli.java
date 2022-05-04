@@ -1,19 +1,15 @@
 package com.thecodeveal.app.config;
 
-import org.springframework.security.core.GrantedAuthority;
-
-import java.util.Collection;
-
 public class VehicleDetailImpli {
 
     private Long id;
     private String vehicleNum;
-    private long ownerId;
+    private String email;
     private String type;
 
-    public VehicleDetailImpli(Long id,long ownerId,String type,String vehicleNum) {
+    public VehicleDetailImpli(Long id, String email, String type, String vehicleNum) {
         this.id = id;
-        this.ownerId = ownerId;
+        this.email = email;
         this.type = type;
         this.vehicleNum = vehicleNum;
     }
@@ -34,12 +30,12 @@ public class VehicleDetailImpli {
         this.type = type;
     }
 
-    public long getOwnerId() {
-        return ownerId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getVehicleNum() {
