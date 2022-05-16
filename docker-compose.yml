@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  app:
+    container_name: app-frontend
+    image: app-frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  garageapp:
+    image: app
+    container_name: garageapp
+    environment:
+      - "MYSQL_HOST=mysqldb"
+      - "MYSQL_USER=root"
+      - "MYSQL_PORT=3306"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+      - zookeper
+      - kafka
+    networks:
+      - app-network
+
+  mysqldb:
+    image: mysql
+    container_name: mysqldb
+    environment:
+      - "MYSQL_ALLOW_EMPTY_PASSWORD=true"
+      - "MYSQL_DATABASE=garage"
+    expose:
+      - '3307'
+    ports:
+      - "3307:3306"
+    networks:
+      - app-network
+
+  zookeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    networks:
+      - app-network
+
+  kafka:
+    image: wurstmeister/kafka
+    hostname: kafka
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+    depends_on:
+      - zookeper
+    networks:
+      - app-network
+
+networks:
+  app-network:

@@ -134,4 +134,10 @@ public class AuthenticationController {
 		return vehicleRepository.findAll();
 	}
 
+//	@GetMapping("/auth/customers")
+//	public String customerDetails(Model model) {
+//		model.addAttribute("customers", userDetailsRepository.findByUserName());
+//		return u
+//	}
+
 }
